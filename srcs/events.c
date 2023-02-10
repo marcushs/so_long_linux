@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: marcus <marcus@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:05:02 by hleung            #+#    #+#             */
-/*   Updated: 2023/01/23 14:49:48 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 14:26:40 by marcus           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	event_listener(int keycode, t_slg *slg)
 		move_player_close(keycode, slg);
 	else
 		move_player_open(keycode, slg);
-	if (keycode == 53 || ((slg->p->y == slg->e->y && slg->p->x == slg->e->x) \
+	if (keycode == XK_Escape || ((slg->p->y == slg->e->y && slg->p->x == slg->e->x) \
 	&& slg->count == slg->map->c[67]))
 	{
 		mlx_destroy_window(slg->mlx, slg->win);
@@ -36,16 +36,16 @@ int	exit_prog(t_slg *slg)
 
 void	move_player_close(int keycode, t_slg *slg)
 {
-	if (keycode == 13 && slg->map->map[slg->p->y - 1][slg->p->x] != '1' && \
+	if (keycode == XK_w && slg->map->map[slg->p->y - 1][slg->p->x] != '1' && \
 		slg->map->map[slg->p->y - 1][slg->p->x] != 'E')
 		move_up(slg);
-	else if (keycode == 2 && slg->map->map[slg->p->y][slg->p->x + 1] != '1' && \
+	else if (keycode == XK_d && slg->map->map[slg->p->y][slg->p->x + 1] != '1' && \
 			slg->map->map[slg->p->y][slg->p->x + 1] != 'E')
 		move_right(slg);
-	else if (keycode == 1 && slg->map->map[slg->p->y + 1][slg->p->x] != '1' && \
+	else if (keycode == XK_s && slg->map->map[slg->p->y + 1][slg->p->x] != '1' && \
 			slg->map->map[slg->p->y + 1][slg->p->x] != 'E')
 		move_down(slg);
-	else if (keycode == 0 && slg->map->map[slg->p->y][slg->p->x - 1] != '1' && \
+	else if (keycode == XK_a && slg->map->map[slg->p->y][slg->p->x - 1] != '1' && \
 			slg->map->map[slg->p->y][slg->p->x - 1] != 'E')
 		move_left(slg);
 }
