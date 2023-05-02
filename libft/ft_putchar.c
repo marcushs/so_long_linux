@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcus <marcus@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 14:53:06 by hleung            #+#    #+#             */
-/*   Updated: 2023/02/19 20:08:51 by marcus           ###   ########lyon.fr   */
+/*   Created: 2022/11/18 14:52:18 by hleung            #+#    #+#             */
+/*   Updated: 2023/02/19 20:08:00 by marcus           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putstr(char *str)
+int	ft_putchar(char c)
 {
-	int	i;
-
-	if (!str)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+	if (write(1, &c, 1) == -1)
+		return (-1);
+	else
+		return (1);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: marcus <marcus@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:47:46 by hleung            #+#    #+#             */
-/*   Updated: 2022/11/22 15:41:13 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/02/19 20:24:12 by marcus           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_check_format(char c, char *charset)
+static int	ft_check_format(char c, char *charset)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_check_format(char c, char *charset)
 	return (0);
 }
 
-int	ft_print_format(va_list ptr, char format)
+static int	ft_print_format(va_list ptr, char format)
 {
 	int		len;
 	char	*low16;

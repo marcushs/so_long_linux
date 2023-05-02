@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 14:00:57 by hleung            #+#    #+#              #
-#    Updated: 2023/01/23 13:01:33 by hleung           ###   ########lyon.fr    #
+#    Updated: 2023/05/02 11:29:47 by hleung           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ NC = \033[0m
 NAME			=	so_long
 
 MLXFLAGS		=	-L mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-
-PFFLAGS			=	-L ft_printf -lftprintf
 
 LIBFTFLAGS		=	-L libft -lft
 
@@ -57,8 +55,6 @@ all:		${NAME}
 ${NAME}:	${DIR_OBJS} ${OBJS} ${HEADERS} ${LIBS_FILES} ${HEADER_FILES}
 			@${MAKE} -sC ./libft
 			@echo "${GREEN}Compiling libft...${NC}"
-			@${MAKE} -sC ./ft_printf
-			@echo "${GREEN}Compiling ft_printf...${NC}"
 			@${MAKE} -sC ./mlx_linux
 			@echo "${GREEN}Compiling mlx...${NC}"
 			@${CC} ${CFLAGS} ${OBJS} ${LIBFTFLAGS} ${PFFLAGS} ${MLXFLAGS} -o ${NAME}	
@@ -70,7 +66,6 @@ ${DIR_OBJS}:
 clean:		
 			@${RM} ${DIR_OBJS}
 			@${MAKE} clean -sC ./libft
-			@${MAKE} clean -sC ./ft_printf
 			@${MAKE} clean -sC ./mlx_linux
 			@echo "${YELLOW}Object files and libraries cleared!${NC}"
 			
@@ -78,7 +73,6 @@ fclean:
 			@${MAKE} clean
 			@${RM} ${NAME} 
 			@${MAKE} fclean -sC ./libft
-			@${MAKE} fclean -sC ./ft_printf
 			@echo "${YELLOW}Executable cleared!${NC}"
 			
 re:			fclean 

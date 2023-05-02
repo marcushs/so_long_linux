@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcus <marcus@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:23:25 by hleung            #+#    #+#             */
-/*   Updated: 2023/01/19 17:02:26 by marcus           ###   ########lyon.fr   */
+/*   Updated: 2023/04/21 11:32:00 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdarg.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -37,7 +42,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
+int		ft_strchr_int(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -65,4 +72,14 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+//ft_printf
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbr(int n);
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_putnbr_base(int n, char *charset);
+int		ft_putadd(unsigned long nbr, char *charset);
+int		ft_printf(const char *arg, ...);
+//get_next_line
+char	*get_next_line(int fd);
 #endif

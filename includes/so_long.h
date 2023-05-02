@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:12:01 by hleung            #+#    #+#             */
-/*   Updated: 2023/01/23 14:50:21 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 11:30:02 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
 

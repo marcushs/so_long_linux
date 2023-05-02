@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 14:53:06 by hleung            #+#    #+#             */
-/*   Updated: 2022/11/21 18:48:16 by hleung           ###   ########lyon.fr   */
+/*   Created: 2023/04/12 16:57:57 by hleung            #+#    #+#             */
+/*   Updated: 2023/04/12 16:58:45 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *str)
+int	ft_strchr_int(const char *s, int c)
 {
+	int	len;
 	int	i;
 
-	if (!str)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
+	len = ft_strlen(s);
 	i = 0;
-	while (str[i])
+	while (i <= len)
 	{
-		write(1, &str[i], 1);
+		if (*s == (unsigned char)c)
+			return (1);
+		s++;
 		i++;
 	}
-	return (i);
+	return (0);
 }
