@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 14:00:57 by hleung            #+#    #+#              #
-#    Updated: 2023/05/02 11:29:47 by hleung           ###   ########lyon.fr    #
+#    Updated: 2023/05/02 14:13:28 by hleung           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ MLXFLAGS		=	-L mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 LIBFTFLAGS		=	-L libft -lft
 
-LIBS_FILES		=	$(shell find libft ft_printf mlx_linux -type f)
+LIBS_FILES		=	$(shell find libft mlx_linux -type f)
 
 HEADER_FILES	=	$(shell find includes -type f)
 
@@ -34,8 +34,8 @@ CC				=	gcc
 
 RM				=	rm -rf
 
-LIST_SRCS		=	backtrack_utils.c backtrack.c events.c free.c get_next_line_utils.c \
-					get_next_line.c map_error.c map.c move.c render.c so_long.c
+LIST_SRCS		=	backtrack_utils.c backtrack.c events.c free.c \
+					map_error.c map.c move.c render.c so_long.c flood_fill.c
 DIR_SRCS		=	./srcs/
 SRCS			=	$(addprefix ${DIR_SRCS}, ${LIST_SRCS})
 
@@ -57,7 +57,7 @@ ${NAME}:	${DIR_OBJS} ${OBJS} ${HEADERS} ${LIBS_FILES} ${HEADER_FILES}
 			@echo "${GREEN}Compiling libft...${NC}"
 			@${MAKE} -sC ./mlx_linux
 			@echo "${GREEN}Compiling mlx...${NC}"
-			@${CC} ${CFLAGS} ${OBJS} ${LIBFTFLAGS} ${PFFLAGS} ${MLXFLAGS} -o ${NAME}	
+			@${CC} ${CFLAGS} ${OBJS} ${LIBFTFLAGS} ${MLXFLAGS} -o ${NAME}	
 			@echo "${GREEN}Compilation completed!${NC}"
 
 ${DIR_OBJS}:	

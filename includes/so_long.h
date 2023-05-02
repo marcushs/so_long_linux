@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:12:01 by hleung            #+#    #+#             */
-/*   Updated: 2023/05/02 11:30:02 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 14:11:04 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ typedef struct	s_slg
 }				t_slg;
 
 
-//gnl && gnl_utils
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_strjoin_gnl(char *s1, char *s2);
-int		ft_strchr_gnl(char *s, int c);
+//gnl
 char	*get_next_line(int fd);
 //map
 t_map	*make_map(char *file_path);
@@ -95,4 +92,5 @@ void	free_everyting(t_slg *slg);
 //exit
 void	print_message_exit(char *err);
 int		exit_prog(t_slg *slg);
+int	flood_fill(t_map *map);
 #endif
