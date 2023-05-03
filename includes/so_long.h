@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:12:01 by hleung            #+#    #+#             */
-/*   Updated: 2023/05/02 14:11:04 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/03 15:42:11 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ t_point	*get_point(t_map *map, char c);
 int		file_type_error(char *file_path);
 int		file_exist(char *file_path);
 int		check_map_error(t_map *map);
-//backtrack && backtrack utils
-int		**create_dir_array(void);
-int		backtrack(t_map *map);
+//flood_fill algo
+int		flood_fill(t_map *map);
 //render
 t_slg	launch_mlx(char *file_path);
 int		event_listener(int keycode, t_slg *slg);
@@ -86,11 +85,10 @@ void	move_left(t_slg *slg);
 int		ft_printf(const char *arg, ...);
 //free
 void	free_map(t_map **map);
-void	free_prev_arr(void **arr, int i, char *err);
+void	free_prev_arr(void **arr, int i);
 void	free_2d_array(void	**arr, int row);
 void	free_everyting(t_slg *slg);
 //exit
 void	print_message_exit(char *err);
 int		exit_prog(t_slg *slg);
-int	flood_fill(t_map *map);
 #endif

@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 14:00:57 by hleung            #+#    #+#              #
-#    Updated: 2023/05/02 14:13:28 by hleung           ###   ########lyon.fr    #
+#    Updated: 2023/05/03 13:02:07 by hleung           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CC				=	gcc
 
 RM				=	rm -rf
 
-LIST_SRCS		=	backtrack_utils.c backtrack.c events.c free.c \
+LIST_SRCS		=	flood_fill_utils.c events.c free.c \
 					map_error.c map.c move.c render.c so_long.c flood_fill.c
 DIR_SRCS		=	./srcs/
 SRCS			=	$(addprefix ${DIR_SRCS}, ${LIST_SRCS})

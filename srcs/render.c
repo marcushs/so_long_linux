@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:46:16 by hleung            #+#    #+#             */
-/*   Updated: 2023/01/23 14:46:48 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/03 15:50:08 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	render_other(t_slg slg, char c)
 	slg.img = mlx_xpm_file_to_image(slg.mlx, rp, &img_w, &img_h);
 	mlx_put_image_to_window(slg.mlx, slg.win, slg.img, \
 	slg.p->x * 64, slg.p->y * 64);
+	mlx_destroy_image(slg.mlx, slg.img);
 }
 
 void	render_temple(t_slg slg)
@@ -54,10 +55,12 @@ void	render_temple(t_slg slg)
 	slg.img = mlx_xpm_file_to_image(slg.mlx, rp, &img_w, &img_h);
 	mlx_put_image_to_window(slg.mlx, slg.win, slg.img, \
 	slg.e->x * 64, slg.e->y * 64);
+	mlx_destroy_image(slg.mlx, slg.img);
 	rp = "assets/imgs/temple.xpm";
 	slg.img = mlx_xpm_file_to_image(slg.mlx, rp, &img_w, &img_h);
 	mlx_put_image_to_window(slg.mlx, slg.win, slg.img, \
 	slg.e->x * 64, slg.e->y * 64);
+	mlx_destroy_image(slg.mlx, slg.img);
 }
 
 void	render_map(t_slg slg)
@@ -77,10 +80,11 @@ void	render_map(t_slg slg)
 			rp = get_texture_path(&slg, x, y, slg.map->map[y][x]);
 			slg.img = mlx_xpm_file_to_image(slg.mlx, rp, &img_w, &img_h);
 			mlx_put_image_to_window(slg.mlx, slg.win, slg.img, x * 64, y * 64);
+			mlx_destroy_image(slg.mlx, slg.img);
 			x++;
 		}
-	x = 0;
-	y++;
+		x = 0;
+		y++;
 	}
 }
 

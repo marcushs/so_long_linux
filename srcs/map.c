@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:16:24 by hleung            #+#    #+#             */
-/*   Updated: 2023/01/20 10:00:47 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/03 15:52:11 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	*count_char(t_map *map)
 	arr = (int *)malloc(sizeof(int) * 256);
 	if (!arr)
 	{
-		free_2d_array((void **)&map->map, map->row);
+		free_map(&map);
 		print_message_exit(MALLOC_ERROR);
 	}
 	ft_bzero(arr, sizeof(int) * 256);
@@ -82,14 +82,12 @@ static char	**parse_map(char *file_path, int row)
 		print_message_exit(MALLOC_ERROR);
 	fd = open(file_path, O_RDONLY);
 	map[0] = get_next_line(fd);
-	if (!map[0])
-		print_message_exit(PARSE_ERROR);
 	i = 0;
 	while (++i < row)
 	{
 		map[i] = get_next_line(fd);
 		if (!map[i])
-			free_prev_arr((void **)&map, i, PARSE_ERROR);
+			free_prev_arr((void **)&map, i);
 	}
 	map[i] = 0;
 	close(fd);
@@ -103,8 +101,16 @@ t_map	*make_map(char *file_path)
 	map = (t_map *)malloc(sizeof(t_map) * 1);
 	if (!map)
 		print_message_exit(MALLOC_ERROR);
+	map->map = NULL;
+	map->c = NULL;
+	map->row = 0;
+	map->col = 0;
 	map->row = count_lines(file_path);
+	if (!map->row)
+		return (free_map(&map), NULL);
 	map->map = parse_map(file_path, map->row);
+	if (!map->map)
+		return (free_map(&map), NULL);
 	map->col = count_cols(map->map[map->row - 1]);
 	map->c = count_char(map);
 	return (map);

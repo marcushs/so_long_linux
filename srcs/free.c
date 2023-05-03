@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:58:51 by hleung            #+#    #+#             */
-/*   Updated: 2023/01/23 10:45:37 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/03 15:30:24 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_message_exit(char *err)
 	exit(0);
 }
 
-void	free_prev_arr(void **arr, int i, char *err)
+void	free_prev_arr(void **arr, int i)
 {
 	i--;
 	while (i >= 0)
@@ -29,7 +29,6 @@ void	free_prev_arr(void **arr, int i, char *err)
 	}
 	free(*arr);
 	*arr = NULL;
-	print_message_exit(err);
 }
 
 void	free_2d_array(void **arr, int row)
@@ -45,9 +44,13 @@ void	free_2d_array(void **arr, int row)
 
 void	free_map(t_map **map)
 {
-	free_2d_array((void **)&(*map)->map, (*map)->row);
-	free((*map)->c);
-	(*map)->c = NULL;
+	if ((*map)->map)
+		free_2d_array((void **)&(*map)->map, (*map)->row);
+	if ((*map)->c)
+	{
+		free((*map)->c);
+		(*map)->c = NULL;
+	}
 	free(*map);
 	*map = NULL;
 }
@@ -59,4 +62,5 @@ void	free_everyting(t_slg *slg)
 	slg->p = NULL;
 	free(slg->e);
 	slg->e = NULL;
+	free(slg->mlx);
 }
