@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:16:24 by hleung            #+#    #+#             */
-/*   Updated: 2023/05/03 15:52:11 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 16:36:16 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,12 @@ static char	**parse_map(char *file_path, int row)
 	int		fd;
 	int		i;
 
-	map = malloc(sizeof(char *) * (row + 1));
+	map = malloc(sizeof(char *) * (row + 1));//pb de malloc ici
 	if (!map)
-		print_message_exit(MALLOC_ERROR);
+	{
+		return (NULL);
+		ft_printf(MALLOC_ERROR);
+	}
 	fd = open(file_path, O_RDONLY);
 	map[0] = get_next_line(fd);
 	i = 0;
