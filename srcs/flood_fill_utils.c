@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:47:53 by hleung            #+#    #+#             */
-/*   Updated: 2023/05/03 13:01:30 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 17:36:41 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static t_point	*create_point(int x, int y)
 
 	point = (t_point *)malloc(sizeof(t_point));
 	if (!point)
+	{
+		ft_putstr_fd(MALLOC_ERROR, 1);
 		return (NULL);
+	}
 	point->x = x;
 	point->y = y;
 	return (point);

@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:16:24 by hleung            #+#    #+#             */
-/*   Updated: 2023/05/04 16:36:16 by hleung           ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 17:38:01 by hleung           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ static int	count_lines(char *file_path)
 	i = 0;
 	fd = open(file_path, O_RDONLY);
 	line = get_next_line(fd);
+	if (!line || line[0] == 0 || line[0] == '\n')
+	{
+		close(fd);
+		ft_putstr_fd(MAP_ERROR, 1);
+		return (free(line), line = NULL, 0);
+	}
 	if (line && line[0] != '\n')
 		i++;
 	while (line)
@@ -77,7 +83,7 @@ static char	**parse_map(char *file_path, int row)
 	int		fd;
 	int		i;
 
-	map = malloc(sizeof(char *) * (row + 1));//pb de malloc ici
+	map = malloc(sizeof(char *) * (row + 1));
 	if (!map)
 	{
 		return (NULL);
